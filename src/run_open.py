@@ -169,7 +169,7 @@ if __name__ == "__main__":
     print('## Cofig ##')
     print('Model ID: ' + model_id)
     print('Prompt: ' + prompt_key)
-    eval_data = pd.read_csv(os.path.join(data_path, "final_batch_head.csv"))
+    eval_data = pd.read_csv(os.path.join(data_path, "final_batch_full.csv"))
     data_size = eval_data.shape[0]
     prediction_data = eval_data.copy()
 
@@ -251,5 +251,5 @@ if __name__ == "__main__":
         prediction_data = prediction_data.drop(columns=[col_name])
 
     prediction_data.insert(len(prediction_data.columns), col_name, predictions)
-    prediction_data.to_csv(os.path.join(data_path, "final_batch_head.csv"), index=False, sep=',', na_rep='')
+    prediction_data.to_csv(os.path.join(data_path, "final_batch_full.csv"), index=False, sep=',', na_rep='')
     arrange_metric(prediction_data, col_name, data_path)
